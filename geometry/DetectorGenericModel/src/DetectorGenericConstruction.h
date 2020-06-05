@@ -16,7 +16,7 @@ class G4GlobalMagFieldMessenger;
 class DetectorGenericConstruction : public G4VUserDetectorConstruction, public MsgService
 {
   public:
-    DetectoGenericConstruction(std::string);
+    DetectorGenericConstruction(std::string);
     virtual ~DetectorGenericConstruction();
     virtual G4VPhysicalVolume* Construct();
     virtual void ConstructSDandField();
