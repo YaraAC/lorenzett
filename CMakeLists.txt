@@ -70,6 +70,7 @@ add_subdirectory( reconstruction/CaloRec )
 add_subdirectory( reconstruction/CaloRingerBuilder )
 add_subdirectory( generator/PythiaGenerator )
 add_subdirectory( geometry/DetectorATLASModel )
+add_subdirectory( geometry/DetectorGenericModel )
 
 
 add_library(lorenzett SHARED
@@ -85,6 +86,7 @@ add_library(lorenzett SHARED
   $<TARGET_OBJECTS:CaloRingerBuilder>
   $<TARGET_OBJECTS:PythiaGenerator>
   $<TARGET_OBJECTS:DetectorATLASModel>
+  $<TARGET_OBJECTS:DetectorGenericModel>
 )
 
 message( STATUS ${FASTJET_LIBRARIES} )
