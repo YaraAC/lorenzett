@@ -34,8 +34,6 @@ done
 
 
 cd /code/lorenzett 
-git add *
-git stash
 git pull
 mkdir build && cd build && cmake .. && make -j$CPU_N && cd .. && source setup.sh
 
