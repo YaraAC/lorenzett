@@ -13,7 +13,7 @@ ROOT_GENERATE_DICTIONARY(DetectorGenericModelDict ${HEADERS} LINKDEF ${CMAKE_CUR
 add_library(DetectorGenericModel  OBJECT ${SOURCES} DetectorGenericModelDict.cxx)
 install(FILES ${HEADERS}  DESTINATION DetectorGenericModel)
 
-
+#
 gaugi_install_python_modules( ${CMAKE_CURRENT_SOURCE_DIR}/python DetectorGenericModel)
 
 
