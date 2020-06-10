@@ -56,7 +56,7 @@ for thread in range( args.numberOfThreads ):
 
 from DetectorATLASModel import DetectorConstruction as ATLAS
 from DetectorGenericModel import DetectorConstruction as Generic
-from DetectorScintiModel import DetectorConstruction as Scinti
+#from DetectorScintiModel import DetectorConstruction as Scinti
 #from DetectorATLASModel import CaloCellBuilder
 
 if args.Calorimeter == "ATLAS":
@@ -78,15 +78,15 @@ if args.Calorimeter == "Generic":
                                   NumberOfThreads = args.numberOfThreads,
                                   OutputFile = args.outputFile)
 
-if args.Calorimeter == "Scintillator":
+#if args.Calorimeter == "Scintillator":
 
-	from DetectorScintiModel import CaloCellBuilder
+#	from DetectorScintiModel import CaloCellBuilder
 
-	acc = ComponentAccumulator("ComponentAccumulator",
-                                  Scinti("ScintiDetector"),
-                                  RunVis=args.visualization,
-                                  NumberOfThreads = args.numberOfThreads,
-                                  OutputFile = args.outputFile)
+#	acc = ComponentAccumulator("ComponentAccumulator",
+#                                  Scinti("ScintiDetector"),
+#                                  RunVis=args.visualization,
+#                                 NumberOfThreads = args.numberOfThreads,
+#                                  OutputFile = args.outputFile)
 
 gun = EventReader( "PythiaGenerator",
                    EventKey   = recordable("EventInfo"),
