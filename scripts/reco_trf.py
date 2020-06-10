@@ -80,7 +80,7 @@ if args.Calorimeter == "Generic":
 
 if args.Calorimeter == "Scintillator":
 
-	from DetectorATLASModel import CaloCellBuilder
+	from DetectorScintiModel import CaloCellBuilder
 
 	acc = ComponentAccumulator("ComponentAccumulator",
                                   Scinti("ScintiDetector"),
