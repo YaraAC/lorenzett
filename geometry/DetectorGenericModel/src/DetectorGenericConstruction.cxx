@@ -63,6 +63,15 @@ void DetectorGenericConstruction::DefineMaterials()
   G4Element* elH = new G4Element("Hydrogen", "H", 1., 1.0079 * g/mole);
   G4Element* elC = new G4Element("Carbon", "C", 6., 12.011 * g/mole);
 
+  G4Element* elMn = new G4Element("Manganese","Mn", 25., 54.94*g/mole);
+  G4Element* elSi = new G4Element("Silicon","Si", 14., 28.09*g/mole);
+  G4Element* elCr = new G4Element("Chromium","Cr", 24., 52.00*g/mole);
+  G4Element* elNi = new G4Element("Nickel","Ni", 28., 58.70*g/mole);
+  G4Element* elFe = new G4Element("Iron","Fe", 26., 55.85*g/mole);
+
+
+
+
   //density = 1.032*g/cm3;
   //G4Material* scinti = new G4Material(name="PLASTIC SCINTILLATOR", density, nel=2);
   //scinti->AddElement(elC, 9);
@@ -83,6 +92,16 @@ void DetectorGenericConstruction::DefineMaterials()
 
   // Vacuum
   new G4Material("Galactic", z=1., a=1.01*g/mole,density= universe_mean_density,kStateGas, 2.73*kelvin, 3.e-18*pascal);
+
+  
+  // Stainless Steel
+  G4Material* steel = new G4Material("Stainless Steel", 8.02 * g/cm3, 5); // Organic plastic
+  steel->AddElement(elMn, 0.02);
+  steel->AddElement(elSi, 0.01);
+  steel->AddElement(elCr, 0.19);
+  steel->AddElement(elNi, 0.10);
+  steel->AddElement(elFe, 0.68);
+
 
   // Print materials
   G4cout << *(G4Material::GetMaterialTable()) << G4endl;
@@ -242,8 +261,8 @@ G4VPhysicalVolume* DetectorGenericConstruction::DefineVolumes()
   // Create Hadronic calorimeter
   CreateBarrel( worldLV,
                 "HAD1",
-                G4Material::GetMaterial("Galactic"), // default
-                G4Material::GetMaterial("G4_Fe"), // absorber
+                G4Material::GetMaterial("Galactic"), // d2efault
+                G4Material::GetMaterial("Stainless Steel"), // absorber
                 G4Material::GetMaterial("PLASTIC SCINTILLATOR"), // gap
                 4, // layers,
                 6.0*cm, // abso
@@ -255,7 +274,7 @@ G4VPhysicalVolume* DetectorGenericConstruction::DefineVolumes()
   CreateBarrel( worldLV,
                 "HAD2",
                 G4Material::GetMaterial("Galactic"), // default
-                G4Material::GetMaterial("G4_Fe"), // absorber
+                G4Material::GetMaterial("Stainless Steel"), // absorber
                 G4Material::GetMaterial("PLASTIC SCINTILLATOR"), // gap
                 11, // layers,
                 6.2*cm, // abso
@@ -267,7 +286,7 @@ G4VPhysicalVolume* DetectorGenericConstruction::DefineVolumes()
   CreateBarrel( worldLV,
                 "HAD3",
                 G4Material::GetMaterial("Galactic"), // default
-                G4Material::GetMaterial("G4_Fe"), // absorber
+                G4Material::GetMaterial("Stainless Steel"), // absorber
                 G4Material::GetMaterial("PLASTIC SCINTILLATOR"), // gap
                 5, // layers,
                 6.2*cm, // abso
@@ -284,7 +303,7 @@ G4VPhysicalVolume* DetectorGenericConstruction::DefineVolumes()
   CreateBarrel( worldLV,
                 "HAD1_Extended",
                 G4Material::GetMaterial("Galactic"), // default
-                G4Material::GetMaterial("G4_Fe"), // absorber
+                G4Material::GetMaterial("Stainless Steel"), // absorber
                 G4Material::GetMaterial("PLASTIC SCINTILLATOR"), // gap
                 4, // layers,
                 6.0*cm, // abso
@@ -296,7 +315,7 @@ G4VPhysicalVolume* DetectorGenericConstruction::DefineVolumes()
   CreateBarrel( worldLV,
                 "HAD2_Extended",
                 G4Material::GetMaterial("Galactic"), // default
-                G4Material::GetMaterial("G4_Fe"), // absorber
+                G4Material::GetMaterial("Stainless Steel"), // absorber
                 G4Material::GetMaterial("PLASTIC SCINTILLATOR"), // gap
                 11, // layers,
                 6.2*cm, // abso
@@ -308,7 +327,7 @@ G4VPhysicalVolume* DetectorGenericConstruction::DefineVolumes()
   CreateBarrel( worldLV,
                 "HAD3_Extended",
                 G4Material::GetMaterial("Galactic"), // default
-                G4Material::GetMaterial("G4_Fe"), // absorber
+                G4Material::GetMaterial("Stainless Steel"), // absorber
                 G4Material::GetMaterial("PLASTIC SCINTILLATOR"), // gap
                 5, // layers,
                 6.2*cm, // abso
@@ -320,7 +339,7 @@ G4VPhysicalVolume* DetectorGenericConstruction::DefineVolumes()
   CreateBarrel( worldLV,
                 "HAD1_Extended",
                 G4Material::GetMaterial("Galactic"), // default
-                G4Material::GetMaterial("G4_Fe"), // absorber
+                G4Material::GetMaterial("Stainless Steel"), // absorber
                 G4Material::GetMaterial("PLASTIC SCINTILLATOR"), // gap
                 4, // layers,
                 6.0*cm, // abso
@@ -332,7 +351,7 @@ G4VPhysicalVolume* DetectorGenericConstruction::DefineVolumes()
   CreateBarrel( worldLV,
                 "HAD2_Extended",
                 G4Material::GetMaterial("Galactic"), // default
-                G4Material::GetMaterial("G4_Fe"), // absorber
+                G4Material::GetMaterial("Stainless Steel"), // absorber
                 G4Material::GetMaterial("PLASTIC SCINTILLATOR"), // gap
                 11, // layers,
                 6.2*cm, // abso
@@ -344,7 +363,7 @@ G4VPhysicalVolume* DetectorGenericConstruction::DefineVolumes()
   CreateBarrel( worldLV,
                 "HAD3_Extended",
                 G4Material::GetMaterial("Galactic"), // default
-                G4Material::GetMaterial("G4_Fe"), // absorber
+                G4Material::GetMaterial("Stainless Steel"), // absorber
                 G4Material::GetMaterial("PLASTIC SCINTILLATOR"), // gap
                 5, // layers,
                 6.2*cm, // abso
