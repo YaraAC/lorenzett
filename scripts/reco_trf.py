@@ -58,7 +58,7 @@ for thread in range( args.numberOfThreads ):
 from DetectorATLASModel import DetectorConstruction as ATLAS
 from DetectorGenericModel import DetectorConstruction as Generic
 from DetectorScintiModel import DetectorConstruction as Scinti
-from DetectorATLASModel import CaloCellBuilder
+#from DetectorATLASModel import CaloCellBuilder
 
 if args.Calorimeter == "ATLAS":
 	from DetectorATLASModel import CaloCellBuilder
