@@ -54,7 +54,6 @@ for thread in range( args.numberOfThreads ):
   outputFileList.append( args.outputFile.replace( '.root', "_%d.root"%thread ) )
 
 
-
 from DetectorATLASModel import DetectorConstruction as ATLAS
 from DetectorGenericModel import DetectorConstruction as Generic
 from DetectorScintiModel import DetectorConstruction as Scinti
