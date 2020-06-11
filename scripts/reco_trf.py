@@ -73,7 +73,7 @@ if args.Calorimeter == "Generic":
 	from DetectorGenericModel import CaloCellBuilder
   
 	acc = ComponentAccumulator("ComponentAccumulator",
-                                  Generic("GenericATLASDetector"),
+                                  Generic("GenericDetector"),
                                   RunVis=args.visualization,
                                   NumberOfThreads = args.numberOfThreads,
                                   OutputFile = args.outputFile)
