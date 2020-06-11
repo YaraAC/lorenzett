@@ -37,6 +37,8 @@ parser.add_argument('--visualization', action='store_true', dest='visualization'
                     help = "Run with Qt interface.")
 
 parser.add_argument('--cal', '--calorimter', action='store', dest='Calorimeter', required = False, help = "Choose the calorimeter")
+
+
 if len(sys.argv)==1:
   parser.print_help()
   sys.exit(1)
@@ -63,20 +65,20 @@ if args.Calorimeter == "ATLAS":
 	from DetectorATLASModel import CaloCellBuilder
 
 	acc = ComponentAccumulator("ComponentAccumulator",
-                                  ATLAS("GenericATLASDetector"),
-                                  RunVis=args.visualization,
-                                  NumberOfThreads = args.numberOfThreads,
-                                  OutputFile = args.outputFile)
+                              ATLAS("GenericATLASDetector"),
+                              RunVis=args.visualization,
+                              NumberOfThreads = args.numberOfThreads,
+                              OutputFile = args.outputFile)
 
 if args.Calorimeter == "Generic":
 
 	from DetectorGenericModel import CaloCellBuilder
   
 	acc = ComponentAccumulator("ComponentAccumulator",
-                                  Generic("GenericDetector"),
-                                  RunVis=args.visualization,
-                                  NumberOfThreads = args.numberOfThreads,
-                                  OutputFile = args.outputFile)
+                              Generic("GenericATLASDetector"),
+                              RunVis=args.visualization,
+                              NumberOfThreads = args.numberOfThreads,
+                              OutputFile = args.outputFile)
 
 #if args.Calorimeter == "Scintillator":
 
@@ -87,6 +89,8 @@ if args.Calorimeter == "Generic":
 #                                  RunVis=args.visualization,
 #                                 NumberOfThreads = args.numberOfThreads,
 #                                  OutputFile = args.outputFile)
+
+
 
 gun = EventReader( "PythiaGenerator",
                    EventKey   = recordable("EventInfo"),

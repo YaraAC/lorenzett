@@ -34,7 +34,7 @@ DetectorGenericConstruction::DetectorGenericConstruction(std::string name)
    G4VUserDetectorConstruction(),
    m_checkOverlaps(true)
 {
-  MSG_INFO( "DetectorContruction was created" );
+  MSG_INFO( "DetectorConstruction was created" );
 }
 
 
@@ -110,7 +110,6 @@ void DetectorGenericConstruction::DefineMaterials()
 
 G4VPhysicalVolume* DetectorGenericConstruction::DefineVolumes()
 {
-
 
   // Get materials
   G4Material* defaultMaterial  = G4Material::GetMaterial("Galactic");
@@ -253,7 +252,7 @@ G4VPhysicalVolume* DetectorGenericConstruction::DefineVolumes()
                 G4ThreeVector(0,0,0),
                 deadMaterialBeforeHCal );
 
-
+// New Regions
   G4Region* had1 = new G4Region("HAD1");
   G4Region* had2 = new G4Region("HAD2");
   G4Region* had3 = new G4Region("HAD3");

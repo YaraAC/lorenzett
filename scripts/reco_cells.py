@@ -33,6 +33,9 @@ parser.add_argument('--evt','--numberOfEvents', action='store', dest='numberOfEv
 parser.add_argument('--visualization', action='store_true', dest='visualization', required = False,
                     help = "Run with Qt interface.")
 
+parser.add_argument('--cal','--calorimeter', action='store', dest='Calorimeter', required = False,
+                    help = "Choose the calorimeter")
+
 if len(sys.argv)==1:
   parser.print_help()
   sys.exit(1)
@@ -50,17 +53,43 @@ for thread in range( args.numberOfThreads ):
   outputFileList.append( args.outputFile.replace( '.root', "_%d.root"%thread ) )
 
 
-
 from DetectorATLASModel import DetectorConstruction as ATLAS
+from DetectorGenericModel import DetectorConstruction as Generic
 from DetectorATLASModel import CaloCellBuilder
 
 
+if args.Calorimeter == "ATLAS":
+    
+    from DetectorATLASModel import CaloCellBuilder
+        
+    acc = ComponentAccumulator("ComponentAccumulator",
+                              ATLAS("GenericATLASDetector"),
+                              RunVis=args.visualization,
+                              NumberOfThreads = args.numberOfThreads,
+                              OutputFile = args.outputFile)
 
-acc = ComponentAccumulator("ComponentAccumulator",
-                            ATLAS("GenericATLASDetector"),
-                            RunVis=args.visualization,
-                            NumberOfThreads = args.numberOfThreads,
-                            OutputFile = args.outputFile)
+if args.Calorimeter == "Generic":
+    
+    from DetectorGenericModel import CaloCellBuilder
+        
+    acc = ComponentAccumulator("ComponentAccumulator",
+                              Generic("GenericATLASDetector"),
+                              RunVis=args.visualization,
+                              NumberOfThreads = args.numberOfThreads,
+                              OutputFile = args.outputFile)
+
+if args.Calorimeter == "Scintillator":
+    
+    from DetectorScintiModel import CaloCellBuilder
+        
+    acc = ComponentAccumulator("ComponentAccumulator",
+                              Scinti("ScintiDetector"),
+                              RunVis=args.visualization,
+                              NumberOfThreads = args.numberOfThreads,
+                              OutputFile = args.outputFile)
+
+
+
 
 
 gun = EventReader( "PythiaGenerator",
